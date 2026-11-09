@@ -80,8 +80,9 @@ def total_log_stats():
     plt.ylabel("Number of Entries")
     plt.show()
 
-print(f"Hey buddy havd bil 1 eller 2")
+print(f"VÆLG 1 EL. 2 BITCH!")
 temp = input("Press 1 or 2")
 
 if temp == "1":
     total_log_stats()
+
