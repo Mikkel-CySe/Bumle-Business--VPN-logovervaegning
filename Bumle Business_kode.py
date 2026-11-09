@@ -1,14 +1,17 @@
 import matplotlib.pyplot as plt
 
-def total_log_stats():
+def total_log_stats(stat_type):
+    '''
+    Skriv en kommentar af funktionen... det kommer
+    :param stat_type:
+    :return:
+    '''
     with open("cyber_security_log_sample.txt") as file:
-
         event_count = {}
         level_count = {}
         ip_count = {}
 
         for line in file:
-
             parts = line.split()
 
             level = ""
@@ -25,78 +28,77 @@ def total_log_stats():
                 elif part.startswith("src_ip="):
                     ip = part.replace("src_ip=", "")
 
+            # Count events
             if event in event_count:
                 event_count[event] += 1
             else:
                 event_count[event] = 1
 
+            # Count log levels
             if level in level_count:
                 level_count[level] += 1
             else:
                 level_count[level] = 1
 
+            # Count IP addresses with warnings or alerts
             if level == "WARN" or level == "ALERT":
-
                 if ip in ip_count:
                     ip_count[ip] += 1
                 else:
                     ip_count[ip] = 1
 
+    # Event statistics
+    if stat_type == "event":
+        print("\nEVENT STATISTICS\n")
 
-    print("EVENT STATISTICS")
+        for event, count in event_count.items():
+            print(event, ":", count)
 
-    for event in event_count:
-        print(event, ":", event_count[event])
+        # Event statistics chart
+        plt.figure(figsize=(10, 5))
+        plt.bar(event_count.keys(), event_count.values())
 
-    print("\nLOG LEVEL STATISTICS")
+        plt.title("Event Statistics")
+        plt.xlabel("Event")
+        plt.ylabel("Occurrences")
+        plt.xticks(rotation=45, ha="right")
+        plt.tight_layout()
+        plt.show()
 
-    for level in level_count:
-        print(level, ":", level_count[level])
+    # Log level statistics
+    elif stat_type == "level":
+        print("\nLOG LEVEL STATISTICS\n")
 
-    print(f"\n{'Count':<10} | {'IP Address'}")
-    print("-" * 25)
+        for level, count in level_count.items():
+            print(level, ":", count)
 
-    for ip, count in ip_count.items():
-        print(f"{count:<10} | {ip}")
+        # Log level statistics chart
+        plt.figure(figsize=(8, 5))
+        plt.bar(level_count.keys(), level_count.values())
 
-    events = list(event_count.keys())
-    counts = list(event_count.values())
-
-    plt.figure(figsize=(12, 6))
-    plt.bar(events, counts)
-    plt.title("Number of Different Security Events")
-    plt.xlabel("Events")
-    plt.ylabel("Number of Events")
-    plt.xticks(rotation=45, ha="right")
-    plt.tight_layout()
-    plt.show()
-
-    levels = list(level_count.keys())
-    level_numbers = list(level_count.values())
-
-    plt.bar(levels, level_numbers)
-    plt.title("Security Log Levels")
-    plt.xlabel("Log Level")
-    plt.ylabel("Number of Entries")
-    plt.show()
-
-print("\n" + "=" * 35)
-print("       CYBERSECURITY LOG ANALYZER")
-print("=" * 35)
-
-print("\n1. View log statistics")
-print("2. Exit program")
+        plt.title("Log Level Statistics")
+        plt.xlabel("Log Level")
+        plt.ylabel("Occurrences")
+        plt.tight_layout()
+        plt.show()
 
 while True:
-    choice = input("\nSelect an option (1-2): ")
+    print("\nCYBER SECURITY LOG ANALYZER")
+    print("---------------------------")
+    print("1. Event Statistics")
+    print("2. Log Level Statistics")
+    print("3. Exit Program")
+
+    choice = input("\nSelect an option: ")
 
     if choice == "1":
-        print("\nGenerating log statistics...\n")
-        total_log_stats()
+        total_log_stats("event")
 
     elif choice == "2":
-        print("\nExiting Cybersecurity Log Analyzer. Goodbye!")
-        break
+        total_log_stats("level")
 
+    elif choice == "3":
+        print("\nExiting program...")
+        break
     else:
-        print("\nInvalid selection! Please enter 1 or 2.")
+        print("\nInvalid choice. Please select 1, 2 or 3.")
