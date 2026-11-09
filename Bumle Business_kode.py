@@ -54,6 +54,22 @@ def total_log_stats(stat_type):
         for event, count in event_count.items():
             print(event, ":", count)
 
+    # Log level statistics
+    elif stat_type == "level":
+        print("\nLOG LEVEL STATISTICS\n")
+
+        for level, count in level_count.items():
+            print(level, ":", count)
+
+    # IP statistics
+    elif stat_type == "ip":
+        print("\nIP STATISTICS (WARN / ALERT)\n")
+
+        for ip, count in ip_count.items():
+            print(ip, ":", count)
+    # ALL GRAPHS
+    elif stat_type == "graph":
+        print("\nGRAPHS\n")
         # Event statistics chart
         plt.figure(figsize=(10, 5))
         plt.bar(event_count.keys(), event_count.values())
@@ -65,13 +81,6 @@ def total_log_stats(stat_type):
         plt.tight_layout()
         plt.show()
 
-    # Log level statistics
-    elif stat_type == "level":
-        print("\nLOG LEVEL STATISTICS\n")
-
-        for level, count in level_count.items():
-            print(level, ":", count)
-
         # Log level statistics chart
         plt.figure(figsize=(8, 5))
         plt.bar(level_count.keys(), level_count.values())
@@ -82,12 +91,28 @@ def total_log_stats(stat_type):
         plt.tight_layout()
         plt.show()
 
+        # IP statistics chart
+        plt.figure(figsize=(10, 5))
+        plt.bar(ip_count.keys(), ip_count.values())
+
+        plt.title("IP Statistics")
+        plt.xlabel("IP Address")
+        plt.ylabel("Warnings and Alerts")
+        plt.xticks(rotation=45, ha="right")
+        plt.tight_layout()
+        plt.show()
+
+
+
+
 while True:
     print("\nCYBER SECURITY LOG ANALYZER")
     print("---------------------------")
     print("1. Event Statistics")
     print("2. Log Level Statistics")
-    print("3. Exit Program")
+    print("3. IP Statistics")
+    print("4. Graphs")
+    print("0. Exit Program")
 
     choice = input("\nSelect an option: ")
 
@@ -98,7 +123,13 @@ while True:
         total_log_stats("level")
 
     elif choice == "3":
+        total_log_stats("ip")
+
+    elif choice == "4":
+        total_log_stats("graph")
+
+    elif choice == "0":
         print("\nExiting program...")
         break
     else:
-        print("\nInvalid choice. Please select 1, 2 or 3.")
+        print("\nInvalid choice. Please select 1, 2, 3, 4 or 5.")
