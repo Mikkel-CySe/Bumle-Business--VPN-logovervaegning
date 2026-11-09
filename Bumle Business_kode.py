@@ -52,11 +52,11 @@ print("\nLOG LEVEL STATISTICS")
 for level in level_count:
     print(level, ":", level_count[level])
 
-print("\nTOP IP ADDRESSES")
+print(f"\n{'Count':<10} | {'IP Address'}")
+print("-" * 25)
 
-for ip in ip_count:
-    print(ip, ":", ip_count[ip])
-
+for ip, count in ip_count.items():
+    print(f"{count:<10} | {ip}")
 
 events = list(event_count.keys())
 counts = list(event_count.values())
