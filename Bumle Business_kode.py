@@ -49,27 +49,32 @@ def total_log_stats(stat_type):
 
     # Event statistics
     if stat_type == "event":
-        print("\nEVENT STATISTICS\n")
+        print("\n=== EVENT STATISTICS ===\n")
 
         for event, count in event_count.items():
             print(event, ":", count)
 
     # Log level statistics
     elif stat_type == "level":
-        print("\nLOG LEVEL STATISTICS\n")
+        print("\n=== LOG LEVEL STATISTICS ===\n")
 
         for level, count in level_count.items():
             print(level, ":", count)
 
     # IP statistics
     elif stat_type == "ip":
-        print("\nIP STATISTICS (WARN / ALERT)\n")
+        print("\n=== IP STATISTICS ===")
+        print("Warnings & Alerts")
+        print(f"\n{'Count':<10} | {'IP Address'}")
+        print("-" * 25)
 
         for ip, count in ip_count.items():
-            print(ip, ":", count)
+            print(f"{count:<10} | {ip}")
+
+
     # ALL GRAPHS
     elif stat_type == "graph":
-        print("\nGRAPHS\n")
+        print("\n=== GRAPHS ===\n")
         # Event statistics chart
         plt.figure(figsize=(10, 5))
         plt.bar(event_count.keys(), event_count.values())
