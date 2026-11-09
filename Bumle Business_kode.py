@@ -1,4 +1,4 @@
-import plotly.express as px
+import matplotlib.pyplot as plt
 
 with open("cyber_security_log_sample.txt") as file:
 
@@ -61,23 +61,20 @@ for ip in ip_count:
 events = list(event_count.keys())
 counts = list(event_count.values())
 
-figure = px.bar(
-    x=events,
-    y=counts,
-    title="Number of Different Security Events",
-    labels={"x": "Events", "y": "Number of Events"},
-)
-
-figure.show()
+plt.figure(figsize=(12, 6))
+plt.bar(events, counts)
+plt.title("Number of Different Security Events")
+plt.xlabel("Events")
+plt.ylabel("Number of Events")
+plt.xticks(rotation=45, ha="right")
+plt.tight_layout()
+plt.show()
 
 levels = list(level_count.keys())
 level_numbers = list(level_count.values())
 
-level_figure = px.bar(
-    x=levels,
-    y=level_numbers,
-    title="Security Log Levels",
-    labels={"x": "Log Level", "y": "Number of Entries"},
-)
-
-level_figure.show()
+plt.bar(levels, level_numbers)
+plt.title("Security Log Levels")
+plt.xlabel("Log Level")
+plt.ylabel("Number of Entries")
+plt.show()
