@@ -84,5 +84,6 @@ print(f"VÆLG 1 EL. 2 BITCH!")
 temp = input("Press 1 or 2: ")
 
 if temp == "1":
+    print(f"\n")
     total_log_stats()
 
