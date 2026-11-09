@@ -80,10 +80,23 @@ def total_log_stats():
     plt.ylabel("Number of Entries")
     plt.show()
 
-print(f"VÆLG 1 EL. 2 BITCH!")
-temp = input("Press 1 or 2: ")
+print("\n" + "=" * 35)
+print("       CYBERSECURITY LOG ANALYZER")
+print("=" * 35)
 
-if temp == "1":
-    print(f"\n")
-    total_log_stats()
+print("\n1. View log statistics")
+print("2. Exit program")
 
+while True:
+    choice = input("\nSelect an option (1-2): ")
+
+    if choice == "1":
+        print("\nGenerating log statistics...\n")
+        total_log_stats()
+
+    elif choice == "2":
+        print("\nExiting Cybersecurity Log Analyzer. Goodbye!")
+        break
+
+    else:
+        print("\nInvalid selection! Please enter 1 or 2.")
