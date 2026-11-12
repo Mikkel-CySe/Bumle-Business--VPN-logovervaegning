@@ -3,6 +3,7 @@ from level_stats import level_stats
 from ip_stats import ip_stats
 from graphs import show_graphs
 from search import search_logs
+
 while True:
     print("\nCYBER SECURITY LOG ANALYZER")
     print("---------------------------")
