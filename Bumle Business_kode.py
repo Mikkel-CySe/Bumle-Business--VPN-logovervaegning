@@ -2,7 +2,7 @@ from event_stats import event_stats
 from level_stats import level_stats
 from ip_stats import ip_stats
 from graphs import show_graphs
-
+from search import search_logs
 while True:
     print("\nCYBER SECURITY LOG ANALYZER")
     print("---------------------------")
@@ -11,6 +11,7 @@ while True:
     print("3. IP Statistics")
     print("4. Graphs")
     print("5. Søge funktion for ip eller user")
+    print("6. Søge time, status or user")
     print("0. Exit Program")
 
     choice = input("\nSelect an option: ")
@@ -30,8 +31,11 @@ while True:
     elif choice == "5":
         show_graphs()
 
+    elif choice == "6":
+        search_logs()
+
     elif choice == "0":
         print("\nExiting program...")
         break
     else:
-        print("\nInvalid choice. Please select 1, 2, 3, 4 or 0.")
+        print("\nInvalid choice. Please select 1, 2, 3, 4, 5, 6 or 0.")
