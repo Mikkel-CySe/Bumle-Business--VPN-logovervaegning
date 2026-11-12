@@ -2,6 +2,7 @@ from event_stats import event_stats
 from level_stats import level_stats
 from ip_stats import ip_stats
 from graphs import show_graphs
+from search_func import search_log
 
 while True:
     print("\nCYBER SECURITY LOG ANALYZER")
@@ -28,10 +29,10 @@ while True:
         show_graphs()
 
     elif choice == "5":
-        show_graphs()
+        search_log()
 
     elif choice == "0":
         print("\nExiting program...")
         break
     else:
-        print("\nInvalid choice. Please select 1, 2, 3, 4 or 0.")
+        print("\nInvalid choice. Please select 1, 2, 3, 4, 5 or 0.")
