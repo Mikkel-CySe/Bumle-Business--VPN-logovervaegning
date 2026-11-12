@@ -36,7 +36,6 @@ def search_logs():
             for part in parts:
                 if part.startswith("status="):
                     status = part.replace("status=", "")
-
                 elif part.startswith("user="):
                     user = part.replace("user=", "")
 
