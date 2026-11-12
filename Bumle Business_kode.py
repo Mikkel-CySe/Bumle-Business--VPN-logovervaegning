@@ -10,6 +10,7 @@ while True:
     print("2. Log Level Statistics")
     print("3. IP Statistics")
     print("4. Graphs")
+    print("5. Søge funktion for ip eller user")
     print("0. Exit Program")
 
     choice = input("\nSelect an option: ")
@@ -24,6 +25,9 @@ while True:
         ip_stats()
 
     elif choice == "4":
+        show_graphs()
+
+    elif choice == "5":
         show_graphs()
 
     elif choice == "0":
