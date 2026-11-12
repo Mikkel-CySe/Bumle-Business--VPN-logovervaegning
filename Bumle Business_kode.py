@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 def total_log_stats(stat_type):
     '''
@@ -10,6 +11,7 @@ def total_log_stats(stat_type):
         event_count = {}
         level_count = {}
         ip_count = {}
+        ip_total_count = {}
 
         for line in file:
             parts = line.split()
@@ -46,6 +48,12 @@ def total_log_stats(stat_type):
                     ip_count[ip] += 1
                 else:
                     ip_count[ip] = 1
+
+            # Count all log lines per IP address (used for scatter plot)
+            if ip in ip_total_count:
+                ip_total_count[ip] += 1
+            else:
+                ip_total_count[ip] = 1
 
     # Event statistics
     if stat_type == "event":
@@ -104,6 +112,45 @@ def total_log_stats(stat_type):
         plt.xlabel("IP Address")
         plt.ylabel("Warnings and Alerts")
         plt.xticks(rotation=45, ha="right")
+        plt.tight_layout()
+        plt.show()
+
+        # Scatter plot: warnings and alerts per IP with a trend line
+        # Sort the IPs so the least active one comes first
+        sorted_ips = sorted(ip_total_count, key=ip_total_count.get)
+
+        ip_list = []
+        warning_list = []
+
+        for ip in sorted_ips:
+            ip_list.append(ip)
+            warning_list.append(ip_count.get(ip, 0))
+
+        plt.figure(figsize=(12, 6))
+        plt.scatter(ip_list, warning_list, s=100, label="IP")
+
+        # Write the number above each dot
+        for i in range(len(ip_list)):
+            plt.text(i, warning_list[i] + 0.5, warning_list[i], ha="center")
+
+        # Trend line (only if there is more than one IP)
+        if len(ip_list) > 1:
+            x_numbers = list(range(len(ip_list)))
+            slope, intercept = np.polyfit(x_numbers, warning_list, 1)
+
+            trend_line = []
+            for x in x_numbers:
+                trend_line.append(slope * x + intercept)
+
+            plt.plot(ip_list, trend_line, color="red", linestyle="--", label="Trend")
+
+        plt.title("Warnings and Alerts per IP")
+        plt.xlabel("IP Address (least to most active)")
+        plt.ylabel("Warnings and Alerts")
+        plt.xticks(rotation=45, ha="right")
+        plt.ylim(0, max(warning_list) + 3)
+        plt.grid(True, alpha=0.3)
+        plt.legend()
         plt.tight_layout()
         plt.show()
 
