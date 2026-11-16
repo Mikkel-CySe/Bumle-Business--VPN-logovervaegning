@@ -13,21 +13,21 @@ This project is a Python/Pycharm based log-analyzer. Its only purpose is to read
 
 ## Installation and usage
 ### Requirements
-**-** Matplotlib
-**-** Numpy
-**-** Plotly
+**-** Matplotlib\
+**-** Numpy\
+**-** Plotly\
 *All these can be downloaded once you start the script the first time.*
 
 ### Run the code: *Bumle Business_kode.py*
 A menu will start within your terminal, select the feature you want to try out.
 
 **Menu options**
-**1** Event Statistics
-**2** Log Level Statistics
-**3** IP statistics
-**4** Graphs
-**5** Search by user, IP address, status, or time interval
-**0** Exit Program
+**1** Event Statistics\
+**2** Log Level Statistics\
+**3** IP statistics\
+**4** Graphs\
+**5** Search by user, IP address, status, or time interval\
+**0** Exit Program\
 
 *Note: Number **0** can at all times be used to either exit or go back within the menu.*
 
