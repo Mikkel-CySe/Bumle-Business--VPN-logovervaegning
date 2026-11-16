@@ -142,6 +142,7 @@ def show_graphs():
     for log, msg in zip(processed_logs, msg_list):
         log["msg"] = msg
 
+
     # Defines the columns displayed in the log table
     columns = [
         "timestamp",
