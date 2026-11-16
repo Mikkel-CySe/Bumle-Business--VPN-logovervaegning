@@ -117,6 +117,20 @@ def show_graphs():
     plt.show()
 
     # ================ LOG TABLE ================ #
+    # laver en ny list for msg
+    msg_list = []
+
+    # åber filen og læser den igemmen
+    with open("cyber_security_log_sample.txt") as file:
+        for line in file:         # Går igennem filen en linje ad gangen
+            if 'msg="' in line:   # Tjekker om linjen har en msg
+                msg_list.append(line.split('msg="')[1].strip().strip('"'))  # Tager teksten efter msg=" og fjerner linjeskift
+
+
+    for log, msg in zip(processed_logs, msg_list): #Sætter hver msg sammen med den rigtige log#
+        log["msg"] = msg # Gemmer msg i loggen, så den kan vises i tabellen
+
+
     # Defines the columns displayed in the log table
     columns = [
         "timestamp",
@@ -126,7 +140,8 @@ def show_graphs():
         "src_ip",
         "dest_host",
         "dest_port",
-        "status"
+        "status",
+        "msg"
     ]
 
     # Creates a table using Plotly
