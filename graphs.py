@@ -1,15 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import plotly.graph_objects as go
-
 from log_reader import read_log
 
-
 def show_graphs():
-    """
-    Shows all graphs: events, log levels, IP statistics and a scatter plot.
-    """
-
+    # Shows all graphs: events, log levels, IP statistics and a scatter plot.
     # Retrieves processed logs and statistics from log_reader
     processed_logs, event_count, level_count, ip_count, ip_total_count = read_log()
 
@@ -17,7 +12,6 @@ def show_graphs():
     print("Open plots menu to see the graphs")
 
     # ================ Event Statistics Chart ================ #
-
     # Creates a bar chart showing the number of each event type
     plt.figure(figsize=(10, 5))
     plt.bar(event_count.keys(), event_count.values())
@@ -34,9 +28,7 @@ def show_graphs():
     plt.tight_layout()
     plt.show()
 
-
     # ================ Log Level Statistics Chart ================ #
-
     # Creates a bar chart showing the distribution of log levels
     plt.figure(figsize=(8, 5))
     plt.bar(level_count.keys(), level_count.values())
@@ -50,9 +42,7 @@ def show_graphs():
     plt.tight_layout()
     plt.show()
 
-
     # ================ IP Statistics Chart ================ #
-
     # Creates a bar chart showing warnings and alerts per IP address
     plt.figure(figsize=(10, 5))
     plt.bar(ip_count.keys(), ip_count.values())
@@ -69,9 +59,7 @@ def show_graphs():
     plt.tight_layout()
     plt.show()
 
-
     # ================ Scatter Plot ================ #
-
     # Sorts IP addresses by their total number of log entries
     # This places the least active IP address first
     sorted_ips = sorted(ip_total_count, key=ip_total_count.get)
@@ -129,7 +117,6 @@ def show_graphs():
     plt.show()
 
     # ================ LOG TABLE ================ #
-
     # Defines the columns displayed in the log table
     columns = [
         "timestamp",
@@ -161,9 +148,7 @@ def show_graphs():
     )])
 
     # Sets the table title
-    fig.update_layout(
-        title="LogSentinel - Cyber Security Log Overview"
-    )
+    fig.update_layout(title="LogSentinel - Cyber Security Log Overview")
 
     # Displays the table
     fig.show()

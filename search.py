@@ -1,57 +1,38 @@
 from datetime import datetime
-
 from log_reader import read_log
 
-
 def get_values(processed_logs, key):
-    """
-    Returns a sorted list of the different values a field has in the log.
-    Used to show the user what can be searched for.
-    """
+    #Returns a sorted list of the different values a field has in the log.
+    #Used to show the user what can be searched for.
     values = []
-
     for log in processed_logs:
         value = log.get(key, "")
         if value and value not in values:
             values.append(value)
-
     return sorted(values)
 
-
 def print_results(processed_logs, key, search_word):
-    """
-    Prints all log lines where the field (key) matches the search word exactly.
-    """
+    #Prints all log lines where the field (key) matches the search word exactly.
     found = 0
-
     print(f"\n=== SEARCH RESULTS: {key} = {search_word} ===\n")
-
     for log in processed_logs:
         if log.get(key, "").lower() == search_word.lower():
             print_log_line(log)
             found += 1
-
     if found == 0:
         print("No log lines found.")
     else:
         print("\nFound", found, "log lines.")
 
-
 def print_log_line(log):
-    """
-    Prints one log entry in a readable format.
-    """
+    #Prints one log entry in a readable format.
     time = log["timestamp"].replace("T", " ")
-
     print(f"{time} | {log.get('level', ''):<5} | {log.get('event', ''):<28} | "
           f"user={log.get('user', ''):<8} | src_ip={log.get('src_ip', ''):<15} | "
           f"status={log.get('status', '')}")
 
-
 def search_time(processed_logs):
-    """
-    Asks for a time interval and prints all log lines inside it.
-    """
+    #Asks for a time interval and prints all log lines inside it.
     # The first and last time in the log, shown so the user knows what is available
     first_time = processed_logs[0]["timestamp"].replace("T", " ")[:16]
     last_time = processed_logs[-1]["timestamp"].replace("T", " ")[:16]
@@ -85,7 +66,6 @@ def search_time(processed_logs):
         return
 
     found = 0
-
     print(f"\n=== SEARCH RESULTS: {start_time} to {end_time} ===\n")
 
     for log in processed_logs:
@@ -100,13 +80,9 @@ def search_time(processed_logs):
     else:
         print("\nFound", found, "log lines.")
 
-
 def search_logs():
-    """
-    Search menu: search the log by user, IP address, status or time interval.
-    """
+    #Search menu: search the log by user, IP address, status or time interval.
     processed_logs = read_log()[0]
-
     while True:
         print("\n=== SEARCH ===")
         print("1. Search by user")

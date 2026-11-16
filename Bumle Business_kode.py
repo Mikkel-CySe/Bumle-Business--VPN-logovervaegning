@@ -4,14 +4,10 @@ from ip_stats import ip_stats
 from graphs import show_graphs
 from search import search_logs
 
-
 def back_to_menu():
-    """
-    Waits until the user presses 0 before returning to the main menu.
-    """
+    #Waits until the user presses 0 before returning to the main menu.
     while input("\nPress 0 to return to the menu: ").strip() != "0":
         pass
-
 
 while True:
     print("\nCYBER SECURITY LOG ANALYZER")

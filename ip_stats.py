@@ -1,10 +1,7 @@
 from log_reader import read_log
 
-
 def ip_stats():
-    """
-    Prints how many warnings and alerts each IP address has.
-    """
+    #Prints how many warnings and alerts each IP address has.
 
     # Retrieves the processed logs and statistics from log_reader
     processed_logs, event_count, level_count, ip_count, ip_total_count = read_log()
