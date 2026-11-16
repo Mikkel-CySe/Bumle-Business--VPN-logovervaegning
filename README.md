@@ -4,12 +4,12 @@ Bumle Business uses a VPN connection to access the company's servers. The compan
 This project is a Python/Pycharm based log-analyzer. Its only purpose is to read the supplied **cyber_security_log_sample.txt** file, which then proceeds to log the entries, present statistics, searches, make tables and graphs through a menu-driven interface within the terminal.
 
 ## Features
-**-** Event statistics: This feature counts how often each event type occurs.
-**-** Log level statistics: This feature counts the occurrences of each log level, this is levels such as *INFO*, *WARN*, and *ALERT*
-**-** IP statistics: This feature counts the warnings and alerts, ordered by their total number of log entries.
-**-** Graphs: This feature display charts for event types, log levels and warnings and alerts per ip.
-**-** Log table: This feature is within the graphs, however this show a table with every entry, and for each and all level, time, user, message and etc, basically everything within the supplied log_sample file.
-**-** Search: This feature allows the user to search log entries by username, source IP address, status or a time interval.
+**-** Event statistics: This feature counts how often each event type occurs.\
+**-** Log level statistics: This feature counts the occurrences of each log level, this is levels such as *INFO*, *WARN*, and *ALERT*\
+**-** IP statistics: This feature counts the warnings and alerts, ordered by their total number of log entries.\
+**-** Graphs: This feature display charts for event types, log levels and warnings and alerts per ip.\
+**-** Log table: This feature is within the graphs, however this show a table with every entry, and for each and all level, time, user, message and etc, basically everything within the supplied log_sample file.\
+**-** Search: This feature allows the user to search log entries by username, source IP address, status or a time interval.\
 
 ## Installation and usage
 ### Requirements
