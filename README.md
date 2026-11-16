@@ -13,9 +13,9 @@ This project is a Python/Pycharm based log-analyzer. Its only purpose is to read
 
 ## Installation and usage
 ### Requirements
-** - ** Matplotlib
-** - ** Numpy
-** - ** Plotly
+**-** Matplotlib
+**-** Numpy
+**-** Plotly
 *All these can be downloaded once you start the script the first time.*
 
 ### Run the code: *Bumle Business_kode.py*
